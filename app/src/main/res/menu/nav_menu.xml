@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/newOrderfragment"
+        android:icon="@drawable/ic_dinner"
+        android:title="Yangi buyurtmalar"
+        />
+    <item
+        android:id="@+id/selectedfragment"
+        android:icon="@drawable/ic_food"
+        android:iconTint="@color/colorAccent"
+        android:title="Tugatilganlar"
+        />
+
+</menu>
