@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "695161547792",
+    "firebase_url": "https://ist-chef.firebaseio.com",
+    "project_id": "ist-chef",
+    "storage_bucket": "ist-chef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695161547792:android:82a779142500c713862e95",
+        "android_client_info": {
+          "package_name": "ist.uz.istchef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695161547792-5kl2ltr88lsd5h1gsrle9pgn9bbjvf5u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ist.uz.istchef",
+            "certificate_hash": "6ec709ee72d8b0c395e234a3ec6fee9294ff4bce"
+          }
+        },
+        {
+          "client_id": "695161547792-uv0un80b1juio4q71kl0k2f1ef9ico07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM3M85liNhsDGu_NaJDNSW3PROrmOsxZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695161547792-uv0un80b1juio4q71kl0k2f1ef9ico07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
