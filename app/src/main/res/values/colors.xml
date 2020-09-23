@@ -7,6 +7,6 @@
     <color name="white">#fff</color>
     <color name="black">#000</color>
     <color name="red">#F50057</color>
-    <color name="yellow">#FFC400</color>
+    <color name="yellow">#FFC107</color>
     <color name="gray">#C3C3C3</color>
 </resources>

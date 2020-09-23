@@ -12,12 +12,12 @@ import android.os.Parcelable
 import android.view.View
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.fragment.app.Fragment
+import ist.uz.istchef.view.view.costum.JSAlertDialogCallback
+import ist.uz.istchef.view.view.costum.JWAlertDialog
+import ist.uz.istchef.view.view.costum.JWAlertType
 import java.io.File
 import java.io.Serializable
 import java.util.*
@@ -26,42 +26,38 @@ import java.util.*
     Toast
  */
 
-fun Context.showToast(string: String) {
-    Toast.makeText(this, string, Toast.LENGTH_LONG).show()
+
+//fun Context.showError(message: String) {
+//    Toasty.error(this, message, Toast.LENGTH_LONG, true).show()
+//}
+//
+//fun Context.showWarning(message: String) {
+//    Toasty.warning(this, message, Toast.LENGTH_SHORT, true).show()
+//}
+fun Context.showError(message: String){
+    val dialog = JWAlertDialog(JWAlertType.ERROR, message)
+    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
 }
 
-fun Context.showShortToast(string: String) {
-    Toast.makeText(this, string, Toast.LENGTH_SHORT).show()
+fun Context.showWarning(message: String){
+    val dialog = JWAlertDialog(JWAlertType.WARNING, message)
+    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
 }
 
-fun Context.showToast(string: Int) {
-    Toast.makeText(this, string, Toast.LENGTH_LONG).show()
+fun Context.showInfo(message: String){
+    val dialog = JWAlertDialog(JWAlertType.INFO, message)
+    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
 }
 
-//fun Context.showError(message: String){
-//    val dialog = JWAlertDialog(JWAlertType.ERROR, message)
-//    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
-//}
-//
-//fun Context.showWarning(message: String){
-//    val dialog = JWAlertDialog(JWAlertType.WARNING, message)
-//    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
-//}
-//
-//fun Context.showInfo(message: String){
-//    val dialog = JWAlertDialog(JWAlertType.INFO, message)
-//    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
-//}
-//
-//fun Context.showSuccess(message: String){
-//    val dialog = JWAlertDialog(JWAlertType.SUCCESS, message)
-//    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
-//}
-//
-//fun Context.showJWAlert(type: JWAlertType, message: String, callback: JSAlertDialogCallback? = null){
-//    val dialog = JWAlertDialog(type, message, callback)
-//    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
-//}
+fun Context.showSuccess(message: String){
+    val dialog = JWAlertDialog(JWAlertType.SUCCESS, message)
+    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
+}
+
+fun Context.showJWAlert(type: JWAlertType, message: String, callback: JSAlertDialogCallback? = null){
+    val dialog = JWAlertDialog(type, message, callback)
+    dialog.show((this as AppCompatActivity).supportFragmentManager, dialog.tag)
+}
 
 /*
     Activity
@@ -212,7 +208,7 @@ inline fun Context.startPdfActivity(pdfFilePath: String?) {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         this.startActivity(intent)
     } catch (e: Exception) {
-        showToast("Cannot open pdf")
+      //  showToast("Cannot open pdf")
     }
 }
 
@@ -342,6 +338,10 @@ fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
     val tmp = this[index1] // 'this' corresponds to the list
     this[index1] = this[index2]
     this[index2] = tmp
+}
+
+fun View.getColor(color: Int): Int{
+    return ContextCompat.getColor(this.context, color)
 }
 
 val Int.dp: Int get() = (this / Resources.getSystem().displayMetrics.density).toInt()

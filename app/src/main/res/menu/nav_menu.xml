@@ -7,6 +7,11 @@
         android:title="Yangi buyurtmalar"
         />
     <item
+        android:id="@+id/preparedFragment"
+        android:icon="@drawable/ic_preparation"
+        android:title="Tayyorlanayotganlar"/>
+
+    <item
         android:id="@+id/selectedfragment"
         android:icon="@drawable/ic_food"
         android:iconTint="@color/colorAccent"

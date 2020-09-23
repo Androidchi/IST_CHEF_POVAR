@@ -1,14 +1,12 @@
 package ist.uz.personalstore.base
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import ist.uz.istchef.utils.LocaleManager
-import ist.uz.istchef.view.ProgressDialogFragment
+import ist.uz.istchef.screen.ProgressDialogFragment
 
 abstract class BaseActivity : AppCompatActivity() {
 

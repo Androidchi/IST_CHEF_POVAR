@@ -3,25 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ist.uz.istchef">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:name=".App"
+        android:allowBackup="true"
+        android:icon="@drawable/cheef"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".SelectedFragment"
-            tools:ignore="Instantiatable"></activity>
-        <activity android:name=".NewOrderFragment"
-            tools:ignore="Instantiatable" />
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".screen.main.aboutapp.AboutAppActivity"></activity>
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".screen.auth.SignActivity" />
+        <activity android:name=".screen.main.MainActivity" />
     </application>
 
 </manifest>

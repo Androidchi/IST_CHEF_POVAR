@@ -22,6 +22,25 @@ class Prefs {
             Hawk.init(app).build();
         }
 
+        fun getToken():String{
+        return Hawk.get(PREF_TOKEN,"")
+        }
+
+        fun setToken(access_token:String){
+        Hawk.put(PREF_TOKEN,access_token)
+        }
+
+        fun getFoodId():Int{
+            return Hawk.get(PREF_STORE,0)
+        }
+
+        fun setFoodId(id:Int){
+        Hawk.put(PREF_STORE,id)
+        }
+
+        fun clearItem(){
+            Hawk.delete(PREF_CART)
+        }
         fun getCartList(): List<BasketModel> {
             return Hawk.get(PREF_CART, emptyList())
         }
@@ -54,6 +73,10 @@ class Prefs {
                 }
             }
             Hawk.put(PREF_CART, items)
+        }
+
+        fun clearAll(){
+            Hawk.deleteAll()
         }
     }
 }
