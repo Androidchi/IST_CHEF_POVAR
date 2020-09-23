@@ -13,6 +13,9 @@ interface Api {
     @POST("login")
     fun login(@Body request: LoginRequest): Observable<BaseResponse<UserInfoModel?>>
 
+    @GET("get-user")
+    fun getUser(@Query("fcm_token")fcmToken:String=Prefs.getFCM() ?: ""):Observable<BaseResponse<UserModel?>>
+
     @GET("get-order-food")
     fun getOrders(@Query("status")status: String):Observable<BaseResponse<List<OrderFoodModel>?>>
 

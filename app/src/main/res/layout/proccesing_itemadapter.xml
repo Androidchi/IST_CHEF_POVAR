@@ -77,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginLeft="8dp"
+            android:visibility="gone"
             android:layout_marginRight="8dp"
             android:text="Yog`sizroq qilib bedana tuxumi va qazi bilan"
             android:textColor="@color/black"
@@ -94,7 +95,7 @@
                 android:text="soni"
                 android:layout_marginLeft="8dp"
                 android:gravity="right"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="4dp"
                 android:textColor="@color/black"
                 android:textSize="14sp"/>
 

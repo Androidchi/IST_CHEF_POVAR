@@ -1,17 +1,22 @@
 package ist.uz.istchef.screen.main.waiting
 
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ist.uz.istchef.R
+import ist.uz.istchef.model.EventModel
 import ist.uz.istchef.model.OrderFoodModel
 import ist.uz.istchef.screen.main.MainViewModel
+import ist.uz.istchef.utils.Constants
 import ist.uz.istchef.view.view.adapter.OrderFoodsAdapter
 import ist.uz.istchef.view.view.adapter.OrderFoodsAdapterListener
 import ist.uz.personalstore.base.BaseFragment
 import ist.uz.personalstore.base.showError
 import kotlinx.android.synthetic.main.waiting_order_fragment.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener {
     override fun getLayout(): Int = R.layout.waiting_order_fragment
@@ -25,7 +30,6 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
 
         })
 
-
         viewModel.error.observe(this, Observer {
             activity?.showError(it)
         })
@@ -37,7 +41,6 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
         viewModel.orderFoodProcessData.observe(this, Observer {
             loadData()
         })
-
 
         swpRefresh.setOnRefreshListener(this)
     }
@@ -63,7 +66,26 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
         loadData()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this)
+        }
+    }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        if (EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().unregister(this)
+        }
+    }
+    @Subscribe
+    fun onEvent(event: EventModel<Any>) {
+        if (event.event == Constants.EVENT_UPDATE_PAY) {
+            activity?.runOnUiThread {
+                viewModel.getSendingOrders()
+            }
+        }
+    }
 
 }

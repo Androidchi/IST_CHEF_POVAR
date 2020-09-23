@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".screen.main.waiting.WaitingFoodFragment">
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -18,7 +18,7 @@ android:id="@+id/swpRefresh"
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-        android:background="@color/backgroundColor"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

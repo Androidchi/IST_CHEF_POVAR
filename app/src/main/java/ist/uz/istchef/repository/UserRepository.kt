@@ -6,6 +6,9 @@ import io.reactivex.schedulers.Schedulers
 import ist.uz.istchef.api.BaseResponse
 import ist.uz.istchef.api.CallbackWrapper
 import ist.uz.istchef.model.*
+import ist.uz.istchef.utils.Constants
+import ist.uz.istchef.utils.Prefs
+import org.greenrobot.eventbus.EventBus
 
 class UserRepository : BaseRepository() {
 
@@ -55,6 +58,26 @@ class UserRepository : BaseRepository() {
                         success.value = true
                     } else {
                         error.value=t.message ?: ""
+                    }
+                }
+            })
+        )
+    }
+
+    fun getUser(progress: MutableLiveData<Boolean>, error: MutableLiveData<String>, success: MutableLiveData<UserModel>){
+        compositeDisposible.add(api.getUser()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(object: CallbackWrapper<BaseResponse<UserModel?>>(error){
+                override fun onSuccess(t: BaseResponse<UserModel?>) {
+                    if (t.status){
+                        success.value = t.data
+                        Prefs.setUser(t.data!!)
+                    }else{
+                        if (t.error_code == 1){
+                            EventBus.getDefault().post(EventModel(Constants.EVENT_LOGOUT, 0))
+                        }
+                        error.value = t.message
                     }
                 }
             })

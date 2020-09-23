@@ -1,12 +1,16 @@
 package ist.uz.istchef.screen.main
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.navigation.NavigationView
 import ist.uz.istchef.BuildConfig
 import ist.uz.istchef.R
+import ist.uz.istchef.model.EventModel
 import ist.uz.istchef.screen.main.aboutapp.AboutAppActivity
 import ist.uz.istchef.screen.main.proccess.ProccessingFragment
 import ist.uz.istchef.screen.main.selected.CompletedFragment
@@ -16,16 +20,25 @@ import ist.uz.istchef.utils.Constants
 import ist.uz.istchef.utils.Prefs
 import ist.uz.personalstore.base.BaseActivity
 import ist.uz.personalstore.base.startActivity
+import ist.uz.personalstore.base.startClearActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.nav_layout.view.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun getLayout(): Int = R.layout.activity_main
+    lateinit var viewModel:MainViewModel
 
     var newOrderFragment = WaitingFoodFragment()
     var selectedFragment = CompletedFragment()
     var preparedFragment = ProccessingFragment()
     override fun initViews() {
+        viewModel=ViewModelProvider(this).get(MainViewModel::class.java)
 
+        viewModel.userData.observe(this, Observer {
+            setClientDataNav()
+        })
         hideFragments()
 
         nav_bottom.setOnNavigationItemSelectedListener { item: MenuItem ->
@@ -108,7 +121,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         finish()
     }
 
+    fun setClientDataNav() {
+        val view = navigation.getHeaderView(0)
+        val user = Prefs.getUser()
+        view.tvPersonName.text = user?.fullname
+        view.tvPhone.text = user?.telephone
+    }
+
     override fun loadData() {
+        viewModel.getUser()
     }
 
     override fun initData() {
@@ -136,6 +157,29 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             startActivity<AboutAppActivity>()
         }
         return true
+    }
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().unregister(this)
+        }
+    }
+
+    @Subscribe
+    fun onEvent(event: EventModel<Any>){
+        if (event.event == Constants.EVENT_LOGOUT){
+            Prefs.clearAll()
+            startClearActivity<SplashActivity>()
+            finish()
+        }
     }
 
 }

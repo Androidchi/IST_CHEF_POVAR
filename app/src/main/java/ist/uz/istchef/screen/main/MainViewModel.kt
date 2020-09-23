@@ -15,6 +15,7 @@ class MainViewModel():ViewModel() {
     val orderFoodsCompleted=MutableLiveData<List<OrderFoodModel>>()
     val orderFoodsProcessing=MutableLiveData<List<OrderFoodModel>>()
     val orderFoodProcessData = MutableLiveData<Boolean>()
+    val userData = MutableLiveData<UserModel>()
 
     fun getSendingOrders(){
         userRepository.getOrders("sending", progress, error, orderFoodsSending)
@@ -33,5 +34,8 @@ class MainViewModel():ViewModel() {
     fun orderFoodComplete(id:Int){
         userRepository.orderFoodComplete(id,progress,error,orderFoodProcessData)
     }
-
+    
+    fun getUser(){
+        userRepository.getUser(progress, error, userData)
+    }
 }

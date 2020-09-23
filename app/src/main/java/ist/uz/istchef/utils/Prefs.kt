@@ -3,6 +3,7 @@ package ist.uz.istchef.utils
 import com.orhanobut.hawk.Hawk
 import ist.uz.istchef.App
 import ist.uz.istchef.model.BasketModel
+import ist.uz.istchef.model.UserModel
 
 const val PREF_TOKEN = "pref_token"
 const val PREF_USER_SETTINGS = "pref_user_settings"
@@ -28,6 +29,22 @@ class Prefs {
 
         fun setToken(access_token:String){
         Hawk.put(PREF_TOKEN,access_token)
+        }
+
+        fun setFCM(value: String){
+            Hawk.put(PREF_FCM, value)
+        }
+
+        fun getFCM(): String?{
+            return Hawk.get(PREF_FCM)
+        }
+
+        fun setUser(value: UserModel){
+            Hawk.put(PREF_USER_SETTINGS, value)
+        }
+
+        fun getUser(): UserModel?{
+            return Hawk.get(PREF_USER_SETTINGS)
         }
 
         fun getFoodId():Int{
