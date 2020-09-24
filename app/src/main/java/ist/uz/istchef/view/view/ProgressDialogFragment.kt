@@ -1,4 +1,4 @@
-package ist.uz.istchef.screen
+package ist.uz.istchef.view.view
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

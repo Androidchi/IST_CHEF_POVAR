@@ -34,7 +34,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="Ilova haqida"/>
+                android:text="@string/ilova_haqida"/>
         </LinearLayout>
 
         <LinearLayout

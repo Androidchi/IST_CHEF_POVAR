@@ -21,7 +21,7 @@ class Constants{
         const val EVENT_UPDATE_PRODUCTS = 3
         const val EVENT_UPDATE_FAVOURITES = 4
         const val EVENT_UPDATE = 5
-        const val EVENT_UPDATE_PAY = 7
+        const val EVENT_UPDATE_CHEF = 7
 
     }
 }

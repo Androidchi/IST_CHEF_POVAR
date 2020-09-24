@@ -70,7 +70,7 @@ class AppFirebaseMessagingService : FirebaseMessagingService(){
         val defaultSoundUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         var intent = Intent(this, MainActivity::class.java)
         if (type == "new_order_food"){
-            EventBus.getDefault().post(EventModel(Constants.EVENT_UPDATE_PAY, 0))
+            EventBus.getDefault().post(EventModel(Constants.EVENT_UPDATE_CHEF, 0))
         }else if (type == "update"){
             intent = Intent(this, MainActivity::class.java)
         }

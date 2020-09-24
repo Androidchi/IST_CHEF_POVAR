@@ -7,7 +7,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.iid.InstanceIdResult
 import ist.uz.istchef.BuildConfig
 import ist.uz.istchef.R
 import ist.uz.istchef.model.EventModel
@@ -17,11 +20,14 @@ import ist.uz.istchef.screen.main.selected.CompletedFragment
 import ist.uz.istchef.screen.main.waiting.WaitingFoodFragment
 import ist.uz.istchef.splash.SplashActivity
 import ist.uz.istchef.utils.Constants
+import ist.uz.istchef.utils.LocaleManager
 import ist.uz.istchef.utils.Prefs
 import ist.uz.personalstore.base.BaseActivity
 import ist.uz.personalstore.base.startActivity
 import ist.uz.personalstore.base.startClearActivity
+import ist.uz.personalstore.base.startClearTopActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottomsheet_language.view.*
 import kotlinx.android.synthetic.main.nav_layout.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -129,7 +135,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun loadData() {
-        viewModel.getUser()
+       // viewModel.getSendingOrders()
+       // viewModel.getUser()
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult: InstanceIdResult? ->
+            Prefs.setFCM(instanceIdResult?.token ?: "")
+            viewModel.getUser()
+        }
     }
 
     override fun initData() {
@@ -155,8 +166,34 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             finish()
         }  else if (item.itemId==R.id.actionAboutUs){
             startActivity<AboutAppActivity>()
+        }else if (item.itemId==R.id.actionLanguage){
+            showLanguageDialog()
         }
         return true
+    }
+
+    fun showLanguageDialog() {
+        val bottomSheetDialog = BottomSheetDialog(this)
+        val viewLang = layoutInflater.inflate(R.layout.bottomsheet_language, null)
+        bottomSheetDialog.setContentView(viewLang)
+        viewLang.tvUz.setOnClickListener {
+            Prefs.setLang("en")
+            LocaleManager.setNewLocale(this, "en")
+            bottomSheetDialog.dismiss()
+
+            startClearTopActivity<SplashActivity>()
+            finish()
+        }
+        viewLang.tvRu.setOnClickListener {
+            Prefs.setLang("ru")
+            LocaleManager.setNewLocale(this, "ru")
+            bottomSheetDialog.dismiss()
+
+            startClearTopActivity<SplashActivity>()
+            finish()
+        }
+
+        bottomSheetDialog.show()
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {

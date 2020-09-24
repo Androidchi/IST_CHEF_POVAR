@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">IST-Кафе-Повар</string>
 
@@ -16,10 +17,10 @@
     <string name="switch_store">Савдо дўконини ўзгартириш</string>
     <string name="switch_currency">Валютани ўзгартириш</string>
     <string name="news">Янгиликлар</string>
-    <string name="switch_language">Тилни ўзгартириш</string>
+    <string name="switch_language">Сменить язык</string>
     <string name="rate_app">Иловани баҳолаш</string>
-    <string name="share_app">Иловани улашиш</string>
-    <string name="logout">Tizimdan chiqish</string>
+    <string name="share_app">Поделитесь приложением</string>
+    <string name="logout">Выход</string>
     <string name="color">Ранги:</string>
     <string name="add_2_cart">Саватга қўшиш</string>
     <string name="similar_products">Ўхшаш маҳсулотлар</string>
@@ -31,10 +32,10 @@
     <string name="male">Эркак</string>
     <string name="female">Аёл</string>
     <string name="save">Сақлаш</string>
-    <string name="log_in">Тизимга кириш</string>
-    <string name="login">Логин</string>
-    <string name="parol">Парол</string>
-    <string name="input">Кириш</string>
+    <string name="log_in">Авторизоваться</string>
+    <string name="login">логин</string>
+    <string name="parol">пароль</string>
+    <string name="input">вход</string>
     <string name="did_you_registrated">Рўйҳатдан ўтганмисиз?</string>
     <string name="registration">Рўйҳатдан ўтиш</string>
     <string name="your_order_accept">Буюртмангиз қабул қилинди!</string>
@@ -71,7 +72,7 @@
     <string name="intro2">Унда ушбу илова айнан сиз учун! Киринг, ўзингизга ёққан маҳсулотларни танланг ва буюртма беринг. Барчаси бир иловада!</string>
     <string name="intro3">Ҳатто бизда тезкор етказиб бериш ҳам мавжуд!</string>
     <string name="intro4">Марҳамат хизматларимиздан фойдаланашингиз мумкин!</string>
-    <string name="about_app">Илова ҳақида</string>
+    <string name="about_app">О приложении</string>
     <string name="download">ЮКЛАБ ОЛИШ</string>
     <string name="input_key">Калитни киритинг:</string>
     <string name="table">Cтол</string>
@@ -82,7 +83,7 @@
     <string name="you_have_unsended_products">Сизда жўнатилмаган маҳсулотлар мавжуд. Илтимос олдин жўнатиш тугмасини босинг.</string>
     <string name="unsended_">Жўнатилмаган:</string>
     <string name="pay_waiting">To\'lov kutilmoqda</string>
-    <string name="completed_list">Tugatilganlar</string>
+    <string name="completed_list">Законченный</string>
     <string name="cancel_list">Bekor qilinganlar</string>
     <string name="room_">Хона:</string>
     <string name="table_">Стол:</string>
@@ -102,12 +103,11 @@
     <string name="do_you_really_complete_order">Siz rostdan ham buyurtmani tugatmoqchimisiz?</string>
     <string name="yes">Ha</string>
     <string name="no">Yo\'q</string>
-    <string name="completed">Тугатилганлар</string>
-    <string name="processing">Таюрланаёотганлар</string>
-    <string name="sending">Янги буюртмалар</string>
-    <string name="ilova_haqida">Илова хақида</string>
-    <string name="login_in">Тизимга кириш</string>
-    <string name="tayyorlash">Tayyorlash</string>
-    <string name="tayyor">Tayyor</string>
-
+    <string name="completed">Законченный</string>
+    <string name="processing">Подготовка</string>
+    <string name="sending">Новые заказы</string>
+    <string name="ilova_haqida">О приложении</string>
+    <string name="login_in">Авторизоваться</string>
+    <string name="tayyorlash">Подготовка</string>
+    <string name="tayyor">Готов</string>
 </resources>

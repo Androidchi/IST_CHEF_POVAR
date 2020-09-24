@@ -47,6 +47,14 @@ class Prefs {
             return Hawk.get(PREF_USER_SETTINGS)
         }
 
+        fun getLang(): String{
+            return Hawk.get(PREF_LANG, "en")
+        }
+
+        fun setLang(lang: String){
+            Hawk.put(PREF_LANG, lang)
+        }
+
         fun getFoodId():Int{
             return Hawk.get(PREF_STORE,0)
         }

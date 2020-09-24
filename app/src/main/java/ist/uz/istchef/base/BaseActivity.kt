@@ -6,7 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import ist.uz.istchef.screen.ProgressDialogFragment
+import ist.uz.istchef.view.view.ProgressDialogFragment
 
 abstract class BaseActivity : AppCompatActivity() {
 

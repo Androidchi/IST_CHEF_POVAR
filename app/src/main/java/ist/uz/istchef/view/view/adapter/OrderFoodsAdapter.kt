@@ -4,14 +4,14 @@ import android.view.View
 import ist.uz.istchef.R
 import ist.uz.istchef.model.OrderFoodModel
 import ist.uz.personalstore.base.getColor
-import kotlinx.android.synthetic.main.proccesing_itemadapter.view.*
+import kotlinx.android.synthetic.main.orders_food_item_adapter.view.*
 
 interface OrderFoodsAdapterListener {
     fun onClick(item: OrderFoodModel)
 }
 
 class OrderFoodsAdapter(val list: List<OrderFoodModel>, val handler: OrderFoodsAdapterListener) :
-    BaseAdapter(list.toMutableList(), R.layout.proccesing_itemadapter) {
+    BaseAdapter(list.toMutableList(), R.layout.orders_food_item_adapter) {
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         super.onBindViewHolder(holder, position)
@@ -32,6 +32,7 @@ class OrderFoodsAdapter(val list: List<OrderFoodModel>, val handler: OrderFoodsA
             holder.itemView.btnCart.visibility = View.GONE
         } else if (item.status == "processing") {
             holder.itemView.btnCart.setCardBackgroundColor(holder.itemView.getColor(R.color.yellow))
+            holder.itemView.tvOrderItem.setText(R.string.tayyor)
         } else if (item.comment != "") {
             holder.itemView.tv_comment.visibility = View.VISIBLE
         }

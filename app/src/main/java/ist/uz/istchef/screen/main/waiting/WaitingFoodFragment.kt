@@ -39,6 +39,7 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
         })
 
         viewModel.orderFoodProcessData.observe(this, Observer {
+            EventBus.getDefault().post(EventModel(Constants.EVENT_UPDATE,0))
             loadData()
         })
 
@@ -81,7 +82,7 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
     }
     @Subscribe
     fun onEvent(event: EventModel<Any>) {
-        if (event.event == Constants.EVENT_UPDATE_PAY) {
+        if (event.event == Constants.EVENT_UPDATE_CHEF) {
             activity?.runOnUiThread {
                 viewModel.getSendingOrders()
             }

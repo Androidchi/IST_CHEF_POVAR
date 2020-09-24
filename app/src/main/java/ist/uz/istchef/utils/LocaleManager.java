@@ -15,10 +15,10 @@ public class LocaleManager {
     /**
      * set current pref locale
      */
-//    public static Context setLocale(Context mContext) {
-//        Log.d("prefs", getLanguagePref(mContext));
-//        return updateResources(mContext, getLanguagePref(mContext));
-//    }
+    public static Context setLocale(Context mContext) {
+        Log.d("prefs", getLanguagePref(mContext));
+        return updateResources(mContext, getLanguagePref(mContext));
+    }
     /**
      * Set new Locale with context
      */

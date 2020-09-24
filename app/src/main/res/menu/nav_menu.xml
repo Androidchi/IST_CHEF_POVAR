@@ -4,18 +4,18 @@
     <item
         android:id="@+id/newOrderfragment"
         android:icon="@drawable/ic_dinner"
-        android:title="Yangi buyurtmalar"
+        android:title="@string/sending"
         />
     <item
         android:id="@+id/preparedFragment"
         android:icon="@drawable/ic_preparation"
-        android:title="Tayyorlanayotganlar"/>
+        android:title="@string/processing"/>
 
     <item
         android:id="@+id/selectedfragment"
         android:icon="@drawable/ic_food"
         android:iconTint="@color/colorAccent"
-        android:title="Tugatilganlar"
+        android:title="@string/completed"
         />
 
 </menu>
