@@ -17,5 +17,11 @@
         android:iconTint="@color/colorAccent"
         android:title="@string/completed"
         />
+    <item
+        android:id="@+id/orderProducts"
+        android:icon="@drawable/ic_order_food2"
+        android:iconTint="@color/colorAccent"
+        android:title="@string/order"
+        />
 
 </menu>

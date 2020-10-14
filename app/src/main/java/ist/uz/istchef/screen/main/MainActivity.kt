@@ -7,14 +7,15 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.multidex.BuildConfig
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.InstanceIdResult
-import ist.uz.istchef.BuildConfig
 import ist.uz.istchef.R
 import ist.uz.istchef.model.EventModel
 import ist.uz.istchef.screen.main.aboutapp.AboutAppActivity
+import ist.uz.istchef.screen.main.order.OrderFoodsFragment
 import ist.uz.istchef.screen.main.proccess.ProccessingFragment
 import ist.uz.istchef.screen.main.selected.CompletedFragment
 import ist.uz.istchef.screen.main.waiting.WaitingFoodFragment
@@ -39,6 +40,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     var newOrderFragment = WaitingFoodFragment()
     var selectedFragment = CompletedFragment()
     var preparedFragment = ProccessingFragment()
+    var orderFragment = OrderFoodsFragment()
     override fun initViews() {
         viewModel=ViewModelProvider(this).get(MainViewModel::class.java)
 
@@ -95,6 +97,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                         } else {
                             supportFragmentManager.beginTransaction()
                                 .show(preparedFragment)
+                                .commitAllowingStateLoss()
+                        }
+                    }
+                    true
+                } R.id.orderProducts -> {
+                    if (orderFragment.isAdded && orderFragment.isVisible) {
+
+                    } else {
+                        hideFragments()
+                        if (!orderFragment.isAdded) {
+                            supportFragmentManager.beginTransaction()
+                                .add(R.id.container, orderFragment)
+                                .commitAllowingStateLoss()
+                        } else {
+                            supportFragmentManager.beginTransaction()
+                                .show(orderFragment)
                                 .commitAllowingStateLoss()
                         }
                     }

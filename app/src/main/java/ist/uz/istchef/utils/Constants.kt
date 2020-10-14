@@ -3,6 +3,7 @@ package ist.uz.istchef.utils
 class Constants{
     companion object{
         const val HOST = "https://loppi.uz/"
+        const val HOST_IMAGE = "http://192.168.1.123/kafe.loc/admin/api/waiter/photo"
         const val HOST_OFFER = "https://ilm-markaz.uz/perspectives/offers/opencontent/support/"
 
         const val START_FRAGMENT = "start_fragment"

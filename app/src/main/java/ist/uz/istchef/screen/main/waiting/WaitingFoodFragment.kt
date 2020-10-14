@@ -25,7 +25,7 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
     override fun setupViews() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.progress.observe(this,{
+        viewModel.progress.observe(this, Observer{
             swpRefresh.isRefreshing=it
 
         })

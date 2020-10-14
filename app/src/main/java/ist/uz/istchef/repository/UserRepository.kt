@@ -63,6 +63,23 @@ class UserRepository : BaseRepository() {
             })
         )
     }
+    fun getMyFoods(progress: MutableLiveData<Boolean>, error: MutableLiveData<String>, success: MutableLiveData<List<ProductModel>>) {
+        compositeDisposible.add(api.getMyFoods()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { progress.value = false }
+            .doOnSubscribe { progress.value = true }
+            .subscribeWith(object : CallbackWrapper<BaseResponse<List<ProductModel>?>>(error) {
+                override fun onSuccess(t: BaseResponse<List<ProductModel>?>) {
+                    if (t.status) {
+                        success.value =t.data
+                    } else {
+                        error.value=t.message ?: ""
+                    }
+                }
+            })
+        )
+    }
 
     fun getUser(progress: MutableLiveData<Boolean>, error: MutableLiveData<String>, success: MutableLiveData<UserModel>){
         compositeDisposible.add(api.getUser()

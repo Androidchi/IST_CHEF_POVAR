@@ -30,7 +30,7 @@ object ISTClient {
             .create()
 
         retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.123/kafe.loc/admin/api/chef/")
+            .baseUrl("http://www.366655-cr96270.tmweb.ru/admin/api/chef/")
             .client(getOkHttpClient(context))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -100,7 +100,7 @@ object ISTClient {
             builder.addHeader("Content-Type", "application/json")
             builder.header("Connection", "close")
             builder.header("X-Mobile-Type", "android")
-            builder.addHeader("access_token",Prefs.getToken())
+            builder.addHeader("token",Prefs.getToken())
             builder.method(original.method(), original.body())
             return builder.build()
         }
