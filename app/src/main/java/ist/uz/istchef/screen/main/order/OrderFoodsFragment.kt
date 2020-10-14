@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import ist.uz.istchef.R
 import ist.uz.istchef.screen.main.MainViewModel
+import ist.uz.istchef.view.view.adapter.BaseAdapterListener
 import ist.uz.istchef.view.view.adapter.ProductFoodsAdapter
 import ist.uz.personalstore.base.BaseFragment
 import ist.uz.personalstore.base.showError
@@ -40,7 +41,12 @@ class OrderFoodsFragment : BaseFragment() {
     override fun setData() {
         if (viewModel.getOrders.value != null){
             recycler.layoutManager=LinearLayoutManager(activity)
-            recycler.adapter=ProductFoodsAdapter(viewModel.getOrders.value!!)
+            recycler.adapter=ProductFoodsAdapter(viewModel.getOrders.value!! ?: emptyList(),object :BaseAdapterListener{
+                override fun onClickItem(item: Any?) {
+
+                }
+
+            })
 
         }
     }

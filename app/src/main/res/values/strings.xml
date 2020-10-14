@@ -108,7 +108,8 @@
     <string name="sending">Янги буюртмалар</string>
     <string name="ilova_haqida">Илова хақида</string>
     <string name="login_in">Тизимга кириш</string>
-    <string name="status">Тугатилди</string>
+    <string name="comleteding">Тугатилди</string>
+    <string name="status">Қўшилди</string>
     <string name="tayyorlash">Tayyorlash</string>
     <string name="tayyor">Tayyor</string>
 

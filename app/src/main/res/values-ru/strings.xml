@@ -109,7 +109,8 @@
     <string name="sending">Новые заказы</string>
     <string name="ilova_haqida">О приложении</string>
     <string name="login_in">Авторизоваться</string>
-    <string name="status">Завершено</string>
-    <string name="tayyorlash">Подготовка</string>
+    <string name="tayyorlash">Завершено</string>
+    <string name="status">Подготовка</string>
     <string name="tayyor">Готов</string>
+    <string name="comleteding">Присоединился</string>
 </resources>
