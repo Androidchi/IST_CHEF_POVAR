@@ -34,7 +34,6 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
                 bases.setProgress(it)
             }
             // swpRefresh.isRefreshing=it
-
         })
 
         viewModel.error.observe(this, Observer {
