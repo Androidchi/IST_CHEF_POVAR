@@ -6,13 +6,12 @@ import ist.uz.istchef.model.OrderFoodModel
 import ist.uz.personalstore.base.getColor
 import kotlinx.android.synthetic.main.orders_food_item_adapter.view.*
 
-interface OrderFoodsAdapterListener {
-    fun onClick(item: OrderFoodModel)
+interface OrderFoodsAdapterListener:BaseAdapterListener {
+    fun onClickBtn(item: OrderFoodModel)
 }
 
 class OrderFoodsAdapter(val list: List<OrderFoodModel>, val handler: OrderFoodsAdapterListener) :
-    BaseAdapter(list.toMutableList(), R.layout.orders_food_item_adapter) {
-
+    BaseAdapter(list.toMutableList(), R.layout.orders_food_item_adapter,handler) {
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         super.onBindViewHolder(holder, position)
         val item = list[position]
@@ -25,7 +24,7 @@ class OrderFoodsAdapter(val list: List<OrderFoodModel>, val handler: OrderFoodsA
         holder.itemView.tv_food_name.text = item.food_name
 
         holder.itemView.btnCart.setOnClickListener {
-            handler.onClick(item)
+            handler.onClickBtn(item)
         }
 
         if (item.status == "completed") {

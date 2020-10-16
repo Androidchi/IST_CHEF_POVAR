@@ -48,8 +48,13 @@ class CompletedFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         if (viewModel.orderFoodsCompleted.value !=null){
             recycler.layoutManager = LinearLayoutManager(activity)
             recycler.adapter = OrderFoodsAdapter(viewModel.orderFoodsCompleted.value!!,object :OrderFoodsAdapterListener{
-                override fun onClick(item: OrderFoodModel) {
+                override fun onClickBtn(item: OrderFoodModel) {
                 }
+
+                override fun onClickItem(item: Any?) {
+
+                }
+
             })
         }
 

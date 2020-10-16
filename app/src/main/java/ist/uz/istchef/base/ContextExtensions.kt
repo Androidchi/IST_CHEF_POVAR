@@ -14,6 +14,7 @@ import android.view.View
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -32,6 +33,10 @@ import java.util.*
     Toast
  */
 
+
+fun Context.showToast(string: String) {
+    Toast.makeText(this, string, Toast.LENGTH_LONG).show()
+}
 
 //fun Context.showError(message: String) {
 //    Toasty.error(this, message, Toast.LENGTH_LONG, true).show()

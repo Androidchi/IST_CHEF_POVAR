@@ -80,7 +80,40 @@ class UserRepository : BaseRepository() {
             })
         )
     }
-
+    fun orderFoodCancle(order_food_id:Int,comment:String,progress: MutableLiveData<Boolean>, error: MutableLiveData<String>, success: MutableLiveData<Boolean>) {
+        compositeDisposible.add(api.ordrFoodCancel(OrderCancelModel(order_food_id,comment))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { progress.value = false }
+            .doOnSubscribe { progress.value = true }
+            .subscribeWith(object : CallbackWrapper<BaseResponse<Any?>>(error) {
+                override fun onSuccess(t: BaseResponse<Any?>) {
+                    if (t.status) {
+                        success.value =true
+                    } else {
+                        error.value=t.message ?: ""
+                    }
+                }
+            })
+        )
+    }
+    fun orderFoodHave(food_id:Int,is_have:Boolean,progress: MutableLiveData<Boolean>, error: MutableLiveData<String>, success: MutableLiveData<Boolean>) {
+        compositeDisposible.add(api.orderFoodHave(OrderFoodHave(food_id,is_have))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { progress.value = false }
+            .doOnSubscribe { progress.value = true }
+            .subscribeWith(object : CallbackWrapper<BaseResponse<Any?>>(error) {
+                override fun onSuccess(t: BaseResponse<Any?>) {
+                    if (t.status) {
+                        success.value =true
+                    } else {
+                        error.value=t.message ?: ""
+                    }
+                }
+            })
+        )
+    }
     fun getUser(progress: MutableLiveData<Boolean>, error: MutableLiveData<String>, success: MutableLiveData<UserModel>){
         compositeDisposible.add(api.getUser()
             .subscribeOn(Schedulers.io())

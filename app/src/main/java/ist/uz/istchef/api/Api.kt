@@ -28,4 +28,10 @@ interface Api {
     @GET("get-my-foods")
     fun getMyFoods():Observable<BaseResponse<List<ProductModel>?>>
 
+    @POST("order-food-cancel")
+    fun ordrFoodCancel(@Body request:OrderCancelModel):Observable<BaseResponse<Any?>>
+
+    @POST("food-have")
+    fun orderFoodHave(@Body request:OrderFoodHave):Observable<BaseResponse<Any?>>
+
 }

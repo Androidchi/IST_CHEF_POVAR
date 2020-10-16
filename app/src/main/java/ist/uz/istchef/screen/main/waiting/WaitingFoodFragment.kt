@@ -8,6 +8,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ist.uz.istchef.R
 import ist.uz.istchef.model.EventModel
 import ist.uz.istchef.model.OrderFoodModel
+import ist.uz.istchef.model.ProductModel
 import ist.uz.istchef.screen.main.MainViewModel
 import ist.uz.istchef.utils.Constants
 import ist.uz.istchef.view.view.adapter.OrderFoodsAdapter
@@ -17,10 +18,13 @@ import ist.uz.personalstore.base.showError
 import kotlinx.android.synthetic.main.waiting_order_fragment.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
+import ist.uz.istchef.screen.main.waiting.witingbottom.WitingBottomFragment
+import ist.uz.istchef.screen.main.waiting.witingbottom.WitingBottomFragmentListener
 
 class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener {
     override fun getLayout(): Int = R.layout.waiting_order_fragment
     lateinit var viewModel: MainViewModel
+    lateinit var item: ProductModel
 
     override fun setupViews() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -43,6 +47,13 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
             loadData()
         })
 
+        viewModel.foodCancel.observe(this, Observer {
+            getBaseActivity {base->
+                base.setProgress(it)
+                loadData()
+            }
+        })
+
         swpRefresh.setOnRefreshListener(this)
     }
 
@@ -55,8 +66,19 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
         if (viewModel.orderFoodsSending.value != null) {
             recycler.layoutManager = LinearLayoutManager(activity)
             recycler.adapter = OrderFoodsAdapter(viewModel.orderFoodsSending.value!!,object :OrderFoodsAdapterListener{
-                override fun onClick(item: OrderFoodModel) {
+                override fun onClickBtn(item: OrderFoodModel) {
                     viewModel.orderFoodProcess(item.id)
+                }
+                override fun onClickItem(item:Any?) {
+                    if (item is OrderFoodModel){
+                        val fragment=WitingBottomFragment(object :WitingBottomFragmentListener{
+                            override fun onDismiss() {
+                                loadData()
+                            }
+                        })
+                        fragment.item=item
+                        fragment.show(activity!!.supportFragmentManager,fragment.tag)
+                    }
                 }
 
             })
@@ -88,5 +110,8 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
             }
         }
     }
-
+    override fun onResume() {
+        super.onResume()
+        recycler.adapter?.notifyDataSetChanged()
+    }
 }

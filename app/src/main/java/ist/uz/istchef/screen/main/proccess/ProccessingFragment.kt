@@ -52,8 +52,12 @@ class ProccessingFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener
         if (viewModel.orderFoodsProcessing.value != null) {
             recyclerProcces.layoutManager = LinearLayoutManager(activity)
             recyclerProcces.adapter = OrderFoodsAdapter(viewModel.orderFoodsProcessing.value!!, object: OrderFoodsAdapterListener{
-                override fun onClick(item: OrderFoodModel) {
+                override fun onClickBtn(item: OrderFoodModel) {
                     viewModel.orderFoodComplete(item.id)
+                }
+
+                override fun onClickItem(items: Any?) {
+
                 }
             })
         }

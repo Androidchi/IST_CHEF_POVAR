@@ -77,7 +77,7 @@
     <string name="input_key">Калитни киритинг:</string>
     <string name="table">Cтол</string>
     <string name="products">Маҳсулотлар</string>
-    <string name="saved_2_cart">Саватга сақланди.</string>
+    <string name="saved_2_cart">Махсулот бекор килинди.</string>
     <string name="please_create_order_before">Илтимос олдин буюртма яратинг.</string>
     <string name="order_accept">Буюртма қабул қилинди!</string>
     <string name="you_have_unsended_products">Сизда жўнатилмаган маҳсулотлар мавжуд. Илтимос олдин жўнатиш тугмасини босинг.</string>
@@ -94,11 +94,13 @@
     <string name="name">Номи</string>
     <string name="amount">Ҳажми</string>
     <string name="summa">Суммаси</string>
-    <string name="receive_pay">Тўлов қабул қилиш</string>
+    <string name="receive">Буюртмани Бекор қилиш </string>
     <string name="cash">Нақт</string>
     <string name="terminal">Терминал</string>
     <string name="complete">Тугатиш</string>
     <string name="make_cancel">Бекор қилиш</string>
+    <string name="order_cancel">Снятие с продажи</string>
+    <string name="order_make">Добавить в продажу</string>
     <string name="comlete_button">Тугатиш</string>
     <string name="do_you_really_complete_order">Siz rostdan ham buyurtmani tugatmoqchimisiz?</string>
     <string name="yes">Ha</string>
@@ -112,5 +114,6 @@
     <string name="tayyorlash">Завершено</string>
     <string name="status">Подготовка</string>
     <string name="tayyor">Готов</string>
+    <string name="order_date_">Время заказа:</string>
     <string name="comleteding">Присоединился</string>
 </resources>

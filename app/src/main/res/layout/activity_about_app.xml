@@ -44,7 +44,7 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="80dp"
-                android:src="@drawable/logo_chef"
+                android:src="@drawable/logo_cafe_chef"
                 android:layout_gravity="center" />
             <TextView
                 android:id="@+id/tvVersion"
