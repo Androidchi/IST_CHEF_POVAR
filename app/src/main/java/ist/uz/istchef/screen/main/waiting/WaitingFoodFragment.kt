@@ -50,6 +50,7 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
         viewModel.foodCancel.observe(this, Observer {
             getBaseActivity {base->
                 base.setProgress(it)
+                setData()
                 loadData()
             }
         })

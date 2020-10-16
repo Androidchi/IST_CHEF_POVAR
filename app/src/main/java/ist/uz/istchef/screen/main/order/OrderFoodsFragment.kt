@@ -86,6 +86,7 @@ class OrderFoodsFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener {
     override fun onRefresh() {
         loadData()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!EventBus.getDefault().isRegistered(this)){
@@ -102,7 +103,7 @@ class OrderFoodsFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener {
     fun onEvent(event: EventModel<Any>) {
         if (event.event == Constants.EVENT_UPDATE_PRODUCTS) {
             activity?.runOnUiThread {
-               setData()
+               loadData()
             }
         }
     }
