@@ -1,7 +1,6 @@
 package ist.uz.istchef.screen.main.order
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,8 +9,8 @@ import ist.uz.istchef.R
 import ist.uz.istchef.model.EventModel
 import ist.uz.istchef.model.ProductModel
 import ist.uz.istchef.screen.main.MainViewModel
-import ist.uz.istchef.screen.main.order.add2cart.OrderBottomFragment
-import ist.uz.istchef.screen.main.order.add2cart.OrderBottomFragmentListener
+import ist.uz.istchef.screen.main.order.addOrder.OrderBottomFragment
+import ist.uz.istchef.screen.main.order.addOrder.OrderBottomFragmentListener
 import ist.uz.istchef.utils.Constants
 import ist.uz.istchef.view.view.adapter.BaseAdapterListener
 import ist.uz.istchef.view.view.adapter.ProductFoodsAdapter

@@ -30,10 +30,7 @@ class WaitingFoodFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         viewModel.progress.observe(this, Observer{
-            getBaseActivity { bases->
-                bases.setProgress(it)
-            }
-            // swpRefresh.isRefreshing=it
+             swpRefresh.isRefreshing=it
         })
 
         viewModel.error.observe(this, Observer {

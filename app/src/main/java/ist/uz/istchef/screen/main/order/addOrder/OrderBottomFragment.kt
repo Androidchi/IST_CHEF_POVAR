@@ -1,4 +1,4 @@
-package ist.uz.istchef.screen.main.order.add2cart
+package ist.uz.istchef.screen.main.order.addOrder
 
 import android.app.Dialog
 import android.os.Build
@@ -22,8 +22,6 @@ import ist.uz.personalstore.base.formattedAmount
 import ist.uz.personalstore.base.loadImage
 import ist.uz.personalstore.base.showError
 import ist.uz.personalstore.base.showToast
-import kotlinx.android.synthetic.main.bottom_fragment_dialog.*
-import kotlinx.android.synthetic.main.bottom_fragment_dialog.cardViewContinue
 import kotlinx.android.synthetic.main.bottom_fragment_dialog.flLoading
 import kotlinx.android.synthetic.main.order_fragment_dialog.*
 import org.greenrobot.eventbus.EventBus
@@ -84,7 +82,7 @@ class OrderBottomFragment : BottomSheetDialogFragment() {
         viewModel.foodHave.observe(this, Observer {
             listener.onDismiss()
             dismiss()
-            activity?.showToast(getString(R.string.saved_2_cart))
+                // activity?.showToast(getString(R.string.saved_2_cart))
         })
 
         imgProduct.loadImage(item.picture)
